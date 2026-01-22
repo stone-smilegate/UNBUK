@@ -113,7 +113,7 @@ html {
 /* Outro Layer */
 .outro-content {
     text-align: center;
-    z-index: 10;
+    z-index: 30;
     /* mix-blend-mode: exclusion; - Removed for clearer text visibility on black */
 }
 
