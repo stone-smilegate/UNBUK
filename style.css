@@ -111,29 +111,31 @@ html {
 }
 
 /* Outro Layer */
-.outro-content {
+.outro-layer .outro-content {
     text-align: center;
     z-index: 30;
     /* mix-blend-mode: exclusion; - Removed for clearer text visibility on black */
 }
 
 .main-title {
-    font-family: 'Cinzel', serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 4rem;
+    text-align: center;
+    font-size: 3rem;
     /* Larger */
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     line-height: 1.1;
     letter-spacing: 0.2em;
     /* Wide spacing */
     color: #fff;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    /* Stronger glow */
 
     opacity: 0;
-    transform: scale(0.95);
-    /* Slight zoom in effect instead of float up */
-    animation: cinematicReveal 3s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: scale(1.1);
+    /* Start slightly zoomed in */
+    animation: cinematicReveal 4s 0.5s forwards cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .main-title .line {
@@ -180,6 +182,22 @@ html {
 }
 
 /* Animations */
+@keyframes cinematicReveal {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+        filter: blur(20px);
+        letter-spacing: 0.5em;
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+        letter-spacing: 0.2em;
+    }
+}
+
 @keyframes floatUp {
     to {
         opacity: 1;
