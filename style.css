@@ -122,11 +122,11 @@ html {
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
-    font-size: 3rem;
+    font-size: 1.5rem;
     /* Larger */
-    margin-bottom: 3rem;
-    line-height: 1.1;
-    letter-spacing: 0.2em;
+    margin-bottom: 2rem;
+    line-height: 1;
+    letter-spacing: 0.5em;
     /* Wide spacing */
     color: #fff;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
