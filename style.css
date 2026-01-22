@@ -1,0 +1,219 @@
+:root {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --accent-color: #f0f0f0;
+    --font-main: 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Canvas Background */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Lowest application layer */
+    pointer-events: none;
+    /* Let clicks pass through if needed, but we handle interaction globally */
+}
+
+/* Layers System */
+.layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s;
+    pointer-events: none;
+}
+
+.layer.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Intro Layer */
+#intro-layer {
+    cursor: pointer;
+}
+
+.intro-content {
+    text-align: center;
+}
+
+#enter-text {
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    font-weight: 300;
+    opacity: 0.8;
+    transition: transform 0.3s ease, letter-spacing 0.5s ease;
+}
+
+#enter-text.blink {
+    animation: softTextPulse 3s infinite ease-in-out;
+}
+
+@keyframes softTextPulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+#enter-text:hover {
+    letter-spacing: 0.4em;
+    opacity: 1;
+}
+
+/* Video Layer */
+#video-layer {
+    background: black;
+    z-index: 20;
+    /* Above particles during playback */
+}
+
+#main-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Outro Layer */
+.outro-content {
+    text-align: center;
+    z-index: 10;
+    /* mix-blend-mode: exclusion; - Removed for clearer text visibility on black */
+}
+
+.main-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 4rem;
+    /* Larger */
+    margin-bottom: 4rem;
+    line-height: 1.1;
+    letter-spacing: 0.2em;
+    /* Wide spacing */
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+
+    opacity: 0;
+    transform: scale(0.95);
+    /* Slight zoom in effect instead of float up */
+    animation: cinematicReveal 3s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.main-title .line {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: var(--font-main);
+    font-weight: 300;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    animation: fadeIn 2s 2s forwards ease-out;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.time-unit span:first-child {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+    animation: breathe 4s infinite ease-in-out;
+}
+
+.separator {
+    opacity: 0.5;
+    margin-top: -1.2rem;
+    /* Align with numbers approximately */
+}
+
+.label {
+    font-size: 0.6rem;
+    opacity: 0.6;
+}
+
+/* Animations */
+@keyframes floatUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .countdown-container {
+        gap: 0.8rem;
+    }
+}
