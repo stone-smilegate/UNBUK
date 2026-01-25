@@ -177,7 +177,7 @@ class SceneManager {
 class Countdown {
     constructor() {
         // Set date to 2026-02-18
-        this.targetDate = new Date('2026-02-18T00:00:00').getTime();
+        this.targetDate = new Date('2026-02-25T00:00:00+09:00').getTime();
 
         this.els = {
             days: document.getElementById('days'),
